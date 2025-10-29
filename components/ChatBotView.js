@@ -51,15 +51,17 @@ const ChatBotView = () => {
       setMessages(prev => [...prev, modelMessage]);
     } catch (err) {
       setError(err.message || 'Impossibile ottenere una risposta.');
-      // Add the user message back if the API call fails
-      setMessages(prev => prev.slice(0, -1));
+      // Remove user message on failure to allow retry
+      setMessages(updatedMessages.slice(0, -1));
     } finally {
       setIsLoading(false);
     }
   };
 
   const parseMarkdown = (text) => {
-    return { __html: marked.parse(text, { breaks: true, gfm: true }) };
+    // Ensure text is a string before parsing
+    const safeText = typeof text === 'string' ? text : '';
+    return { __html: marked.parse(safeText, { breaks: true, gfm: true }) };
   };
 
   return (

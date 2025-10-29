@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { TimerIcon, ChartBarIcon, ChatBubbleLeftRightIcon, Cog6ToothIcon } from './Icons.js';
 

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const SessionLogModal = ({ isOpen, onClose, onSubmit }) => {
