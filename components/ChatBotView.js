@@ -51,8 +51,8 @@ const ChatBotView = () => {
       setMessages(prev => [...prev, modelMessage]);
     } catch (err) {
       setError(err.message || 'Impossibile ottenere una risposta.');
-      // Remove user message on failure to allow retry
-      setMessages(updatedMessages.slice(0, -1));
+      // Add the user message back if the API call fails
+      setMessages(prev => prev.slice(0, -1));
     } finally {
       setIsLoading(false);
     }
