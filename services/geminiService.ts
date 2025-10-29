@@ -1,4 +1,5 @@
 
+
 import { GoogleGenAI, Chat, Type } from "@google/genai";
 import { StudySession, ChatMessage, AnalysisResult } from '../types';
 
@@ -10,12 +11,8 @@ const getApiKey = (): string => {
     if (storedKey) {
         return storedKey;
     }
-    // 2. Fallback alla variabile d'ambiente (per lo sviluppo locale)
-    if (process.env.API_KEY) {
-        return process.env.API_KEY;
-    }
-    // 3. Se nessuna chiave è disponibile, lancia un errore
-    throw new Error("Chiave API non trovata. Impostala nelle Impostazioni o come variabile d'ambiente API_KEY.");
+    // 2. Se nessuna chiave è disponibile, lancia un errore
+    throw new Error("Chiave API non trovata. Impostala nelle Impostazioni.");
 };
 
 
